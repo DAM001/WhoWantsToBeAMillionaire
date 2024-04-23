@@ -3,7 +3,9 @@
     --theme-color: #3d3d3d;
     --theme-color-dark: #015089;
     --theme-color-light: #44a3c5;
-    --theme-selected: #fed900;
+    --theme-selected: #ffc116;
+    --theme-good: #b9da02;
+    --theme-bad: #ff2c2c;
     --space-1: 4px;
     --space-2: 8px;
     --space-3: 12px;
@@ -78,13 +80,13 @@ header h1 {
     z-index: 100;
 }
 
-.question {
+#question {
     grid-column: 1 / -1;
     margin-bottom: var(--space-4);
     font-size: 24px;
 }
 
-.current-money {
+#current-payment {
     background-color: var(--theme-selected);
     text-align: center;
     font-size: 16px;
@@ -97,10 +99,18 @@ header h1 {
 
 .answer {
     font-size: 16px;
+    transition: .2s;
+    cursor: pointer;
+    &:hover {
+        scale: 1.02;
+        background-color: var(--theme-color-light);
+        border: solid 2px var(--theme-color-dark);
+        color: var(--theme-color-dark);
+    }
 }
 
 .answer,
-.question {
+#question {
     background-color: var(--background-color);
     text-align: center;
     padding: var(--space-4);
@@ -109,14 +119,14 @@ header h1 {
 }
 
 
-/* Money */
+/* Payment */
 
-.money {
+#payment {
     font-size: 18px;
     text-align: center;
 }
 
-.money-header {
+.payment-header {
     position: relative;
     background-image: url("./assets/money.png");
     background-position: bottom;
@@ -126,7 +136,7 @@ header h1 {
     border-top: solid 2px var(--theme-color-dark);
 }
 
-.money-header::before {
+.payment-header::before {
     content: "";
     position: absolute;
     top: 0;
@@ -136,12 +146,12 @@ header h1 {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--theme-color-light));
 }
 
-.money-header h1 {
+.payment-header h1 {
     color: var(--background-color);
     padding-top: 70px;
 }
 
-.fade-in {
+.payment-container {
     background-color: var(--background-color);
     border: solid 2px var(--theme-color-dark);
     color: var(--theme-color-dark);
@@ -153,6 +163,20 @@ header h1 {
     animation-timeline: view();
     animation-range-start: contain - 60vh;
     animation-range-end: 30vh;
+}
+
+.payment-fix {
+    background-color: var(--theme-bad);
+    font-size: 30px;
+    padding: var(--space-1) var(--space-3);
+}
+
+.payment-done {
+    background-color: var(--theme-good);
+}
+
+.payment-highlight {
+    background-color: var(--theme-selected);
 }
 
 @keyframes fade-in {
